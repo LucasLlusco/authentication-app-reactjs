@@ -1,0 +1,70 @@
+$themes: (
+  light: (
+    text-color:#333333,
+    text-color2:#828282,
+    bg:#fafafb,
+    bg2: #fff,
+    main-blue:#2F80ED,
+    light-blue:#2D9CDB,
+    dark-blue: #0069d9,
+    main-red:#EB5757,
+    error-bg: #f8d7da,
+    error-text: #c82333,
+    border-color:#E0E0E0,
+    hover-bg-color:#F2F2F2
+  ),
+  dark: (
+    text-color:#E0E0E0,
+    text-color2:#828282,
+    bg:#1A202C,
+    bg2: #24292f,
+    main-blue:#2F80ED,
+    dark-blue: #0069d9,
+    light-blue:#2D9CDB,
+    main-red:#EB5757,
+    error-bg: #f8d7da,
+    error-text: #c82333,
+    border-color:#E0E0E0,
+    hover-bg-color:#1A202C
+  )
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+@mixin laptop { 
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 576px) {
+    @content;
+  }
+}

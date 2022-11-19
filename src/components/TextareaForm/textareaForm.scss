@@ -1,0 +1,48 @@
+@import "../../styles.scss";
+
+.textarea-form {
+    @include themify($themes) {
+        .label {
+            display: block; 
+            font-weight: 600;
+            min-height: 25px; 
+            cursor: pointer;
+            width: fit-content;
+            transition: .3s ease all;
+            color: themed("text-color");
+            &.error {
+                color: themed("main-red");
+            }
+        }
+        .textarea {
+            width: -webkit-fill-available;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: .3s ease all;
+            background-color: themed("bg");
+            border: 1px solid themed("border-color");
+            color: themed("text-color");
+            height: 92px;
+            resize: none;
+            font-family: 'Noto Sans', sans-serif;
+            padding: 16px 10px;
+            &:focus {
+                border-color: themed("main-blue");
+                outline: none;
+                box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+            }
+            &.error {  
+                border-color: themed("main-red");
+            }
+        }
+        .textarea-error {
+            font-size: 0.75rem;
+            color: themed("main-red");
+            display: none;
+            max-width: 415px;
+            &.error {
+                display: inline-flex; 
+            }
+        }
+    }
+}

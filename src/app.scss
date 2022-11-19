@@ -1,0 +1,28 @@
+@import "./styles.scss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+main {
+    min-height: 100vh;
+    &.theme-light {
+        background-color: #fafafb;
+    }
+    &.theme-dark {
+        background-color: #1A202C;
+    }
+}
+    
